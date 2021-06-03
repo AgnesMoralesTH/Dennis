@@ -4,7 +4,7 @@ import {
 } from '../constants/productConstants'
 //dispatch outputs the switch actions
 //thunk allows us to call async and add func to a func
-const listProducts = () => async (dispatch)=> {
+export const listProducts = () => async (dispatch)=> {
     try{
         dispatch({type:PRODUCT_LIST_REQUEST})
         const {data} = await axios.get('/api/products/')
