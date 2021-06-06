@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react'
 import { Row, Col } from 'react-bootstrap'
 
 import Product from '../components/Product'
-
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 import {useDispatch, useSelector} from 'react-redux'
 import { listProducts } from '../actions/productActions'
 
@@ -16,11 +17,12 @@ function HomeScreen() {
       
     }, [dispatch])
 
-    
+    //error gets passed into Message as a child
     return (
         <div>
             <h1>Latest Products</h1>
-            {   loading ? <h2>Loading...</h2> : error ? <h3>{error}</h3>
+            
+            {   loading ? <h2><Loader /></h2> : error ? <Message variant="danger">{error}</Message>
                 :  
                 <Row>
                 {products.map(product => (
